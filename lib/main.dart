@@ -1,36 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
-State appReducer(State state, dynamic action) {
-  switch (state) {
-    case State.One:
-      return State.Two;
-    case State.Two:
-      return State.One;
-  }
-}
+enum Action { clickAddRecord }
 
 enum State { One, Two }
 
-void main() => runApp(MyApp());
+State appReducer(State state, dynamic action) {
+  if (action == Action.clickAddRecord) {
+    return State.Two;
+  }
+
+  return state;
+}
+
+void main() {
+  final store = new Store<State>(appReducer, initialState: State.One);
+
+  runApp(MyApp(store));
+}
 
 class MyApp extends StatelessWidget {
-  final store = Store<State>(appReducer, initialState: State.One);
+  final Store<State> store;
+
+  MyApp(this.store);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'TBD',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('App Name TBD'),
+  Widget build(BuildContext context) => StoreProvider<State>(
+        store: store,
+        child: MaterialApp(
+          title: 'TBD',
+          home: Scaffold(
+            appBar: AppBar(
+              title: Text('App Name TBD'),
+            ),
+            body: Column(
+              children: [
+                StoreConnector<State, State>(
+                    builder: (context, state) => Text(state.toString()),
+                    converter: (something) => something.state),
+                FlatButton(
+                    onPressed: () => store.dispatch(Action.clickAddRecord),
+                    child: Text('Button'))
+              ],
+            ),
+          ),
         ),
-        body: Center(
-          child: Text('Something'),
-        ),
-      ),
-    );
-  }
+      );
 }
 
 class RecordTile extends StatelessWidget {
@@ -83,8 +99,6 @@ class RecordTile extends StatelessWidget {
     );
   }
 }
-
-enum Action { clickAddRecord }
 
 class Record {
   DateTime startDateTime;
