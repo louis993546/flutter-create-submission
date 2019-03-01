@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+
+State appReducer(State state, dynamic action) {
+  switch (state) {
+    case State.One:
+      return State.Two;
+    case State.Two:
+      return State.One;
+  }
+}
+
+enum State { One, Two }
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final store = Store<State>(appReducer, initialState: State.One);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,12 +35,15 @@ class MyApp extends StatelessWidget {
 
 class RecordTile extends StatelessWidget {
   final Record _record;
-  final DashboardConfig _dashboardConfig;
+  final List<DashboardColumn> _columns;
 
-  RecordTile(this._record, this._dashboardConfig);
+  RecordTile(this._record, this._columns);
+
+  RecordTile.secondConstructor(Record record, DashboardConfig dashboardConfig)
+      : this(record, dashboardConfig.columns);
 
   Iterable<String> test() {
-    return _dashboardConfig.columns.map((column) {
+    return _columns.map((column) {
       String outputString;
       switch (column) {
         case DashboardColumn.date:
