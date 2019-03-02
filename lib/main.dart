@@ -41,7 +41,7 @@ class ActionCreator {
   dynamic hasExistingDashboardConfigs(List<DashboardConfig> configs) {
     return {
       ""
-    }
+    };
   }
 }
 
