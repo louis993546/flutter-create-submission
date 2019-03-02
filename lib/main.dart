@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:uuid/uuid.dart';
 
 enum Action { clickAddRecord }
 
@@ -12,6 +13,36 @@ State appReducer(State state, dynamic action) {
   }
 
   return state;
+}
+
+// TODO rename this to State
+class State2 {
+  List<DashboardConfig> _dashboardConfigList;
+  DateTime _previousSessionStartTime;
+  String _previousSessionVersionCode;
+  Map<Uuid, List<Record>> _recordsPerPage;
+  Record _currentlyViewingRecord;
+
+  State2.initialState() {
+    _dashboardConfigList = [];
+    _previousSessionStartTime = null;
+    _previousSessionVersionCode = null;
+    _recordsPerPage = {};
+    _currentlyViewingRecord = null;
+  }
+}
+
+//TODO these functions should not return dynamic.
+class ActionCreator {
+  dynamic appStarted() {
+    return "App Started";
+  }
+
+  dynamic hasExistingDashboardConfigs(List<DashboardConfig> configs) {
+    return {
+      ""
+    }
+  }
 }
 
 void main() {
@@ -126,8 +157,10 @@ enum DashboardColumn {
 }
 
 class DashboardConfig {
+  String id;
   String title;
   List<DashboardColumn> columns;
+  //TODO figure out how to represent filters
 
-  DashboardConfig(this.title, this.columns);
+  DashboardConfig(this.id, this.title, this.columns);
 }
