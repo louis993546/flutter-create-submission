@@ -7,6 +7,7 @@ class AppState {
   Map<String, List<Record>> recordsPerPage;
   Record currentlyViewingRecord;
   bool showAddRecordScreen;
+  bool showRecordDetailScreen;
   bool showAddDashboardConfigScreen;
   bool showDeleteRecordConfirmationModal;
 
@@ -17,6 +18,7 @@ class AppState {
     recordsPerPage = {};
     currentlyViewingRecord = null;
     showAddRecordScreen = false;
+    showRecordDetailScreen = false;
     showAddDashboardConfigScreen = false;
     showDeleteRecordConfirmationModal = false;
   }

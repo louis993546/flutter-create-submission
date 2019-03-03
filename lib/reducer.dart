@@ -7,6 +7,7 @@ AppState appReducer(AppState state, dynamic action) {
     return state;
   } else if (action is ClickRecord) {
     state.currentlyViewingRecord = action.record;
+    state.showRecordDetailScreen = true;
     return state;
   } else if (action is ClickAddDashboardConfigButton) {
     state.showAddDashboardConfigScreen = true;
