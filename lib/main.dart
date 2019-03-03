@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
+import 'package:redux_logging/redux_logging.dart';
 import 'reducer.dart';
 import 'state.dart';
 import 'action.dart';
@@ -10,7 +11,10 @@ void main() {
   final store = new Store<AppState>(
     appReducer,
     initialState: AppState.initialState(),
-    middleware: [thunkMiddleware],
+    middleware: [
+      LoggingMiddleware.printer(),
+      thunkMiddleware,
+    ],
   );
 
   runApp(MyApp(store));

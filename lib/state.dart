@@ -1,17 +1,23 @@
 import 'model.dart';
 
 class AppState {
-  List<DashboardConfig> _dashboardConfigList;
-  DateTime _previousSessionStartTime;
-  String _previousSessionVersionCode;
-  Map<String, List<Record>> _recordsPerPage;
-  Record _currentlyViewingRecord;
+  List<DashboardConfig> dashboardConfigList;
+  DateTime previousSessionStartTime;
+  String previousSessionVersionCode;
+  Map<String, List<Record>> recordsPerPage;
+  Record currentlyViewingRecord;
+  bool showAddRecordScreen;
+  bool showAddDashboardConfigScreen;
+  bool showDeleteRecordConfirmationModal;
 
   AppState.initialState() {
-    _dashboardConfigList = [];
-    _previousSessionStartTime = null;
-    _previousSessionVersionCode = null;
-    _recordsPerPage = {};
-    _currentlyViewingRecord = null;
+    dashboardConfigList = [];
+    previousSessionStartTime = null;
+    previousSessionVersionCode = null;
+    recordsPerPage = {};
+    currentlyViewingRecord = null;
+    showAddRecordScreen = false;
+    showAddDashboardConfigScreen = false;
+    showDeleteRecordConfirmationModal = false;
   }
 }
