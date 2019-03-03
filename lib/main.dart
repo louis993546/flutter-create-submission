@@ -3,7 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'reducer.dart';
 import 'state.dart';
-import 'model.dart';
+import 'action.dart';
 
 void main() {
   final store =
@@ -32,62 +32,12 @@ class MyApp extends StatelessWidget {
                     builder: (context, state) => Text(state.toString()),
                     converter: (something) => something.state),
                 FlatButton(
-                    onPressed: () => store.dispatch(Action.clickAddRecord),
+                    onPressed: () =>
+                        store.dispatch(ActionCreator.clickAddRecordButton()),
                     child: Text('Button'))
               ],
             ),
           ),
         ),
       );
-}
-
-class RecordTile extends StatelessWidget {
-  final Record _record;
-  final List<DashboardColumn> _columns;
-
-  RecordTile(this._record, this._columns);
-
-  RecordTile.secondConstructor(Record record, DashboardConfig dashboardConfig)
-      : this(record, dashboardConfig.columns);
-
-  Iterable<String> test() {
-    return _columns.map((column) {
-      String outputString;
-      switch (column) {
-        case DashboardColumn.date:
-          outputString = _record.startDateTime.toIso8601String();
-          break;
-        case DashboardColumn.dateTime:
-          outputString = _record.startDateTime.toIso8601String();
-          break;
-        case DashboardColumn.duration:
-          outputString = _record.duration.toString();
-          break;
-        case DashboardColumn.meter:
-          outputString = _record.distanceMeters.toString();
-          break;
-        case DashboardColumn.per500m:
-          outputString = _record.calculatePer500m().toString();
-          break;
-        case DashboardColumn.heartRate:
-          outputString = "TODO";
-          break;
-        case DashboardColumn.strokePerMinute:
-          outputString = _record.strokePerMinute.toString();
-          break;
-        case DashboardColumn.resistance:
-          outputString = _record.resistance.toString();
-          break;
-      }
-      return outputString;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var displayStrings = test();
-    return Row(
-      children: List.from(displayStrings.map((text) => Text(text))),
-    );
-  }
 }
