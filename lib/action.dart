@@ -10,6 +10,9 @@ class ClickRecord {
 
 class ClickAddDashboardConfigButton {}
 
+//TODO maybe this action will be the same for edit as well?
+class ClickDismissAddDashboardConfigButton {}
+
 class ClickEditDashboardConfigButton {
   DashboardConfig dashboardConfig;
 
@@ -22,11 +25,17 @@ class ClickDeleteRecordButton {
   ClickDeleteRecordButton(this.record);
 }
 
+class ClickConfirmDeleteRecordButton {}
+
+class ClickCancelDeleteRecordButton {}
+
 class ClickSaveRecordButton {
   Record record;
 
   ClickSaveRecordButton(this.record);
 }
+
+//TODO figure out how many "dismiss" action exists for add/edit record
 
 class ActionCreator {
   static ClickAddRecordButton clickAddRecordButton() => ClickAddRecordButton();
@@ -36,12 +45,22 @@ class ActionCreator {
   static ClickAddDashboardConfigButton clickAddDashboardConfigButton() =>
       ClickAddDashboardConfigButton();
 
+  static ClickDismissAddDashboardConfigButton
+      clickDismissAddDashboardConfigButton() =>
+          ClickDismissAddDashboardConfigButton();
+
   static ClickEditDashboardConfigButton clickEditDashboardConfigButton(
           DashboardConfig dashboardConfig) =>
       ClickEditDashboardConfigButton(dashboardConfig);
 
   static ClickDeleteRecordButton clickDeleteRecordButton(Record record) =>
       ClickDeleteRecordButton(record);
+
+  static ClickConfirmDeleteRecordButton clickConfirmDeleteRecordButton() =>
+      ClickConfirmDeleteRecordButton();
+
+  static ClickCancelDeleteRecordButton clickCancelDeleteRecordButton() =>
+      ClickCancelDeleteRecordButton();
 
   static ClickSaveRecordButton clicksaveRecordButton(Record record) =>
       ClickSaveRecordButton(record);
