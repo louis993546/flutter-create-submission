@@ -1,63 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:uuid/uuid.dart';
-
-enum Action { clickAddRecord }
-
-enum State { One, Two }
-
-State appReducer(State state, dynamic action) {
-  if (action == Action.clickAddRecord) {
-    return State.Two;
-  }
-
-  return state;
-}
-
-// TODO rename this to State
-class State2 {
-  List<DashboardConfig> _dashboardConfigList;
-  DateTime _previousSessionStartTime;
-  String _previousSessionVersionCode;
-  Map<Uuid, List<Record>> _recordsPerPage;
-  Record _currentlyViewingRecord;
-
-  State2.initialState() {
-    _dashboardConfigList = [];
-    _previousSessionStartTime = null;
-    _previousSessionVersionCode = null;
-    _recordsPerPage = {};
-    _currentlyViewingRecord = null;
-  }
-}
-
-//TODO these functions should not return dynamic.
-class ActionCreator {
-  dynamic appStarted() {
-    return "App Started";
-  }
-
-  dynamic hasExistingDashboardConfigs(List<DashboardConfig> configs) {
-    return {
-      ""
-    };
-  }
-}
+import 'reducer.dart';
+import 'state.dart';
+import 'action.dart';
 
 void main() {
-  final store = new Store<State>(appReducer, initialState: State.One);
+  final store =
+      new Store<AppState>(appReducer2, initialState: AppState.initialState());
 
   runApp(MyApp(store));
 }
 
 class MyApp extends StatelessWidget {
-  final Store<State> store;
+  final Store<AppState> store;
 
   MyApp(this.store);
 
   @override
-  Widget build(BuildContext context) => StoreProvider<State>(
+  Widget build(BuildContext context) => StoreProvider<AppState>(
         store: store,
         child: MaterialApp(
           title: 'TBD',
