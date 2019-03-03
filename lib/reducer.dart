@@ -18,14 +18,8 @@ AppState appReducer(AppState state, dynamic action) {
   } else if (action is ClickDeleteRecordButton) {
     state.showDeleteRecordConfirmationModal = true;
     return state;
-  } else if (action is ClickConfirmDeleteRecordButton) {
-    //TODO maybe this should have been handled by middleware?
-    return state;
   } else if (action is ClickCancelDeleteRecordButton) {
     state.showDeleteRecordConfirmationModal = false;
-    return state;
-  } else if (action is ClickSaveRecordButton) {
-    //TODO maybe this should have been handled by middleware?
     return state;
   } else {
     //TODO how to get the Logger?

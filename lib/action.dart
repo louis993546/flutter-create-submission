@@ -56,13 +56,14 @@ class ActionCreator {
   static ClickDeleteRecordButton clickDeleteRecordButton() =>
       ClickDeleteRecordButton();
 
-  static ClickConfirmDeleteRecordButton clickConfirmDeleteRecordButton(
-          Record record) =>
-      ClickConfirmDeleteRecordButton(record);
-
   static ClickCancelDeleteRecordButton clickCancelDeleteRecordButton() =>
       ClickCancelDeleteRecordButton();
 
-  static ClickSaveRecordButton clicksaveRecordButton(Record record) =>
-      ClickSaveRecordButton(record);
+  //TODO these 2 shouldn't exists: they should be handled by middleware
+  // static ClickConfirmDeleteRecordButton clickConfirmDeleteRecordButton(
+  //         Record record) =>
+  //     ClickConfirmDeleteRecordButton(record);
+
+  // static ClickSaveRecordButton clickSaveRecordButton(Record record) =>
+  //     ClickSaveRecordButton(record);
 }

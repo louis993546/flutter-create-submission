@@ -78,8 +78,8 @@ THEN: show edit dashboard screen for that particular dashboard
 
   test('''\n
 GIVEN: N/A
-WHEN: click \' close\' button when adding dashboard
-THEN: show confirmation modal
+WHEN: click \'delete\' button for a record
+THEN: show \'are you sure\' modal
   ''', () {
     var state = AppState.initialState();
     var action = ActionCreator.clickDeleteRecordButton();
@@ -89,16 +89,16 @@ THEN: show confirmation modal
     expect(output.showDeleteRecordConfirmationModal, equals(true));
   });
 
-    test('''\n
+  test('''\n
 GIVEN: N/A
-WHEN: click 
-THEN: show confirmation modal
+WHEN: click \'cancel\' and do not delete record
+THEN: dismiss the confirmation modal
   ''', () {
     var state = AppState.initialState();
-    var action = ActionCreator.clickDeleteRecordButton();
+    var action = ActionCreator.clickCancelDeleteRecordButton();
 
     var output = appReducer(state, action);
 
-    expect(output.showDeleteRecordConfirmationModal, equals(true));
+    expect(output.showDeleteRecordConfirmationModal, equals(false));
   });
 }
