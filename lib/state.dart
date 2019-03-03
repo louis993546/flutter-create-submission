@@ -1,11 +1,10 @@
-import 'package:uuid/uuid.dart';
 import 'model.dart';
 
 class AppState {
   List<DashboardConfig> _dashboardConfigList;
   DateTime _previousSessionStartTime;
   String _previousSessionVersionCode;
-  Map<Uuid, List<Record>> _recordsPerPage;
+  Map<String, List<Record>> _recordsPerPage;
   Record _currentlyViewingRecord;
 
   AppState.initialState() {

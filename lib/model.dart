@@ -24,10 +24,10 @@ enum DashboardColumn {
 }
 
 class DashboardConfig {
-  String id;
+  String uuid;
   String title;
   List<DashboardColumn> columns;
   //TODO figure out how to represent filters
 
-  DashboardConfig(this.id, this.title, this.columns);
+  DashboardConfig(this.uuid, this.title, this.columns);
 }
