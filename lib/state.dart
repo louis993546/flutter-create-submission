@@ -1,5 +1,5 @@
-import 'main.dart';
 import 'package:uuid/uuid.dart';
+import 'model.dart';
 
 class AppState {
   List<DashboardConfig> _dashboardConfigList;
