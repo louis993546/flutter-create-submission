@@ -61,5 +61,44 @@ THEN: show \'are you sure, nothing will be save\' modal
     // expect(output.showAddDashboardConfigScreen, equals(true));
   });
 
-  
+  test('''\n
+GIVEN: N/A
+WHEN: click edit button for a dashboard
+THEN: show edit dashboard screen for that particular dashboard
+  ''', () {
+    var mockDashboardConfig = MockDashboardConfig();
+    var state = AppState.initialState();
+    var action =
+        ActionCreator.clickEditDashboardConfigButton(mockDashboardConfig);
+
+    var output = appReducer(state, action);
+
+    //TODO I don't think there flag nor DashboardConfig in the state
+  });
+
+  test('''\n
+GIVEN: N/A
+WHEN: click \' close\' button when adding dashboard
+THEN: show confirmation modal
+  ''', () {
+    var state = AppState.initialState();
+    var action = ActionCreator.clickDeleteRecordButton();
+
+    var output = appReducer(state, action);
+
+    expect(output.showDeleteRecordConfirmationModal, equals(true));
+  });
+
+    test('''\n
+GIVEN: N/A
+WHEN: click 
+THEN: show confirmation modal
+  ''', () {
+    var state = AppState.initialState();
+    var action = ActionCreator.clickDeleteRecordButton();
+
+    var output = appReducer(state, action);
+
+    expect(output.showDeleteRecordConfirmationModal, equals(true));
+  });
 }

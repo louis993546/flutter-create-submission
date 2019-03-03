@@ -19,13 +19,13 @@ class ClickEditDashboardConfigButton {
   ClickEditDashboardConfigButton(this.dashboardConfig);
 }
 
-class ClickDeleteRecordButton {
+class ClickDeleteRecordButton {}
+
+class ClickConfirmDeleteRecordButton {
   Record record;
 
-  ClickDeleteRecordButton(this.record);
+  ClickConfirmDeleteRecordButton(this.record);
 }
-
-class ClickConfirmDeleteRecordButton {}
 
 class ClickCancelDeleteRecordButton {}
 
@@ -53,11 +53,12 @@ class ActionCreator {
           DashboardConfig dashboardConfig) =>
       ClickEditDashboardConfigButton(dashboardConfig);
 
-  static ClickDeleteRecordButton clickDeleteRecordButton(Record record) =>
-      ClickDeleteRecordButton(record);
+  static ClickDeleteRecordButton clickDeleteRecordButton() =>
+      ClickDeleteRecordButton();
 
-  static ClickConfirmDeleteRecordButton clickConfirmDeleteRecordButton() =>
-      ClickConfirmDeleteRecordButton();
+  static ClickConfirmDeleteRecordButton clickConfirmDeleteRecordButton(
+          Record record) =>
+      ClickConfirmDeleteRecordButton(record);
 
   static ClickCancelDeleteRecordButton clickCancelDeleteRecordButton() =>
       ClickCancelDeleteRecordButton();
