@@ -1,6 +1,6 @@
 import 'package:flutter_create_submission/action/creator.dart';
 import 'package:flutter_create_submission/state.dart';
-import 'package:flutter_create_submission/reducer.dart';
+import 'package:flutter_create_submission/reducer/reducer.dart';
 import 'package:test/test.dart';
 
 import 'mock_modal.dart';
