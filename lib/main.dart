@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_create_submission/screen/dashboardPages.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:redux_logging/redux_logging.dart';
 import 'reducer.dart';
 import 'state.dart';
-import 'action/creator.dart';
 
 void main() {
   final store = new Store<AppState>(
@@ -31,21 +31,32 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'TBD',
           home: Scaffold(
+            //TODO this needs to be super customize-able
             appBar: AppBar(
               title: Text('App Name TBD'),
             ),
-            body: Column(
-              children: [
-                StoreConnector<State, State>(
-                    builder: (context, state) => Text(state.toString()),
-                    converter: (something) => something.state),
-                FlatButton(
-                    onPressed: () =>
-                        store.dispatch(ActionCreator.clickAddRecordButton()),
-                    child: Text('Button'))
-              ],
-            ),
+            body: new AppBody(store: store),
           ),
         ),
       );
+}
+
+class AppBody extends StatelessWidget {
+  const AppBody({
+    Key key,
+    @required this.store,
+  }) : super(key: key);
+
+  final Store<AppState> store;
+
+  @override
+  Widget build(BuildContext context) {
+    return StoreConnector<State, State>(
+      converter: (something) => something.state,
+      builder: (context, state) {
+        //TODO switch which screen to show based on the state
+        return DashboardPages(store: store);
+      },
+    );
+  }
 }
