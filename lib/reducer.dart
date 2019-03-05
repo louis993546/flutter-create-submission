@@ -1,5 +1,7 @@
 import 'state.dart';
 import 'action/action.dart';
+import 'action/dashboardScreen.dart';
+import 'action/detailScreen.dart';
 
 AppState appReducer(AppState state, dynamic action) {
   if (action is ClickAddRecordButton) {

@@ -5,7 +5,7 @@ import 'package:redux_thunk/redux_thunk.dart';
 import 'package:redux_logging/redux_logging.dart';
 import 'reducer.dart';
 import 'state.dart';
-import 'action/action.dart';
+import 'action/creator.dart';
 
 void main() {
   final store = new Store<AppState>(

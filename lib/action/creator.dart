@@ -1,5 +1,7 @@
 import '../model.dart';
 import 'action.dart';
+import 'dashboardScreen.dart';
+import 'detailScreen.dart';
 
 class ActionCreator {
   static ClickAddRecordButton clickAddRecordButton() => ClickAddRecordButton();
